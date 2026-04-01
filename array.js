@@ -135,15 +135,15 @@
 // Index 1: banana
 // Index 2: orange
 
-let fruits = ["apple", "banana", "orange"];
+// let fruits = ["apple", "banana", "orange"];
 
-for(let i =0; i < fruits.length; i++){
-    console.log("Index " + i + " : " + fruits[i]);
-}
-// Write a for loop that counts how many numbers between 1 and 50 are divisible by 5.
-for(let i = 0; i <= 50; i++){
-    i
-}
+// for(let i =0; i < fruits.length; i++){
+//     console.log("Index " + i + " : " + fruits[i]);
+// }
+// // Write a for loop that counts how many numbers between 1 and 50 are divisible by 5.
+// for(let i = 0; i <= 50; i++){
+//     i
+// }
 // 🔴 Advanced Level
 
 // Given:

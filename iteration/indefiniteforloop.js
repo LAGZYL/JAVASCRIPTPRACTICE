@@ -5,3 +5,6 @@
 while(true){
     console.log("me")
 }
+
+
+for(;;){}
