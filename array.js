@@ -148,10 +148,21 @@
 
 // Given:
 
-// let nums = [1, 2, 3, 4, 5];
+let nums = [1, 2, 3, 4, 5];
+let mum = []
+// for(let element of nums){
+//     mum.push(element*2)
+// }
+// console.log(mum);
+
+console.log(nums.map(n => n*2))
 
 
-// Write a for loop that creates a new array with each value multiplied by 2.
+
+// Write a for loop that creates a new array with each value multiplied 
+// by 2.
+
+
 
 // Write a for loop that prints a right-angled triangle using *:
 

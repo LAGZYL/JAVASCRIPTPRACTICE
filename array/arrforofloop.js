@@ -1,9 +1,8 @@
-// let numbers = [1, 2, 3,'apple', 'bannana', 4, 5, 'orange', true, 89, 32,'idowu', 'lanre', 78, false]
-// // for (let i = 0; i < numbers.length; i++){ 
-// //    console.log(`index= ${i}, element= ${numbers[i]}`);
-// // }
- 
-
+let numbers = [1, 2, 3,'apple', 'bannana', 4, 5, 'orange',
+     true, 89, 32,'idowu', 'lanre', 78, false]
+for (let i = 0; i < numbers.length; i++){ 
+   console.log(`index= ${i}, element= ${numbers[i]}`);
+ }
 // // let students= [ "Gbenga", "Dami", "Lagzyl"]
 // // students.age = 12;
 // // students.address ="70 plumbley hall"
@@ -16,7 +15,6 @@
 
 
 // /*
-
 // an object is an ITERABLE if it has  [Symbol.iterator]() method
 // [Symbol.iterator]() method returns an ITERATOR object
 // an object is an ITEARATOR if it has  a method called next()
@@ -137,8 +135,6 @@
 // */
 // //  let scores = [34,89,99,6,716,99,1000,9800]
 // //  let largest = scores[0]
-
-
 // //  for(let i =1;i < scores.length; i++){
 // // console.log(i, scores[i])
 //   //   console.log("largest found so far is ", largest)
@@ -170,7 +166,7 @@
 //   }
 // }
 // console.log(count);
-
+ 
 // let numbers = [34,89,9,6,716, 90, 990];
 // let largest = -Infinity
 // let secondLargest = -Infinity
@@ -215,8 +211,8 @@
 // }
 // console.log(count);
 
-let mixed = [3, 5, 9, -7, 89, 0]
-let firstNegative = 0
+// let mixed = [3, 5, 9, -7, 89, 0]
+// let firstNegative = 0
 
 
 // for(let element of mixed){
@@ -251,5 +247,5 @@ let firstNegative = 0
 // console.log(evens)
 // console.log(numbers);
 
-const numbers = [1,2,3,4,5,6]
-console.log(numbers.filter(n => n % 2 === 0))
+// const numbers = [1,2,3,4,5,6]
+// console.log(numbers.filter(n => n % 2 === 0))

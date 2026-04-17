@@ -247,16 +247,16 @@ until the total is greater than 20, then stop.
 
 */
 
-let sum = 0;
-for(let i = 1; i <= 10; i++){
-  sum = sum + i
-  // console.log("current sum ", sum);
-//  console.log(`added ${i}, sum is now ${sum}`)
-  if(sum > 10){
-    break;
-  }
-}
-console.log("final sum ", sum);
+// let sum = 0;
+// for(let i = 1; i <= 10; i++){
+//   sum = sum + i
+//   // console.log("current sum ", sum);
+// //  console.log(`added ${i}, sum is now ${sum}`)
+//   if(sum > 10){
+//     break;
+//   }
+// }
+// console.log("final sum ", sum);
 
 // let sum = 0;
 // for(let i = 1; sum <= 20; i++){
