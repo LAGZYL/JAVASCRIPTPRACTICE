@@ -490,9 +490,11 @@ create a function that rejects, if a promise takes longer than a timeout
 // }).catch((err)=>{console.log(err)})
 
 /*
+ static promise method
 * Promise.all → waits for ALL
 * Promise.race → returns first finished (success or fail)
 * Promise.any → returns first successful (ignores failures) 
+  promise.allSettled
 */
 
 
