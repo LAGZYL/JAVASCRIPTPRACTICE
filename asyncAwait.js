@@ -234,31 +234,79 @@ write an async function that
 // }
 
 
-function  riskyOperation() {
-       return new Promise((resolve, reject)=>{
-          const success = Math.random() > 0.5;
-           setTimeout(()=>{
-               if(success){
-                   resolve('success')
-               }else{
-                  reject('failed')
-               }
+// function  riskyOperation() {
+//        return new Promise((resolve, reject)=>{
+//           const success = Math.random() > 0.5;
+//            setTimeout(()=>{
+//                if(success){
+//                    resolve('success')
+//                }else{
+//                   reject('failed')
+//                }
               
-         }, 1000)
+//          }, 1000)
 
-       });
+//        });
 
-  }
+//   }
 
 
-  async function handleRisky() {
-    try{
-      const result = await riskyOperation()
-   console.log(result)
-    }catch(error){
-      console.log(error)
-    }
+//   async function handleRisky() {
+//     try{
+//       const result = await riskyOperation()
+//    console.log(result)
+//     }catch(error){
+//       console.log(error)
+//     }
    
     
+//   }
+//   handleRisky();
+
+/*
+you have the following promise-based functions
+
+getUser() ==> {userId: 1}
+
+getPosts(userID) ==> ['post1', 'post2', 'post3']
+
+write an async function that:
+
+1. gets the user
+2. uses the user id to get posts
+3. logs the posts
+
+
+*/
+const users = [{id: 1, title:'post1'}, {id: 2, title:'post22'},
+  {id: 1, title:'post2'},{id: 1, title:'post3'},{id: 3, title:'post33'}]
+function getUser(x){
+  return new Promise((resolve,reject)=>{
+    resolve({id:x})
+  })
+}
+
+
+
+ function getPosts (userId) {
+  return new Promise((resolve,reject)=>{
+    let result = users.filter((element)=>{
+     return element.id === userId
+    
+    }).map((element)=>{
+     return element.title})
+    // console.log(result)
+    resolve(result)
+    })
+    
   }
-  handleRisky();
+
+  async function getUserPost() {
+    const user = await getUser(1);
+    // console.log(user.id);
+    const post = await getPosts(user.id);
+    console.log(post);
+
+    
+  }
+  getUserPost();

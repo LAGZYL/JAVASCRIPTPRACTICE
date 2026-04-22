@@ -249,3 +249,9 @@ for (let i = 0; i < numbers.length; i++){
 
 // const numbers = [1,2,3,4,5,6]
 // console.log(numbers.filter(n => n % 2 === 0))
+
+
+let strName = ["Lagzyl"]
+for(let i = 0; i < i.length; i++){
+ console.log(i)    
+}
