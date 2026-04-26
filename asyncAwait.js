@@ -278,35 +278,265 @@ write an async function that:
 
 
 */
-const users = [{id: 1, title:'post1'}, {id: 2, title:'post22'},
-  {id: 1, title:'post2'},{id: 1, title:'post3'},{id: 3, title:'post33'}]
-function getUser(x){
-  return new Promise((resolve,reject)=>{
-    resolve({id:x})
+// const users = [{id: 1, title:'post1'}, {id: 2, title:'post22'},
+//   {id: 1, title:'post2'},{id: 1, title:'post3'},{id: 3, title:'post33'}]
+// function getUser(x){
+//   return new Promise((resolve,reject)=>{
+//     resolve({id:x})
+//   })
+// }
+
+
+
+//  function getPosts (userId) {
+//   return new Promise((resolve,reject)=>{
+//     let result = users.filter((element)=>{
+//      return element.id === userId
+    
+//     }).map((element)=>{
+//      return element.title})
+//     // console.log(result)
+//     resolve(result)
+//     })
+    
+//   }
+
+//   async function getUserPost() {
+//     const user = await getUser(1);
+//     // console.log(user.id);
+//     const post = await getPosts(user.id);
+//     console.log(post);
+
+    
+  // }
+  // getUserPost();
+
+
+  /*
+  problem:
+
+you have array of userids
+
+const ids = [1, 2, 3, 4, 5]
+
+and a promised-based function fetchUser(id)
+
+fetch each user one by one using async/await
+
+
+our expected output :
+
+User 1
+User 2
+User 3
+User 4
+User 5
+  */
+
+/*sequential loop */
+const ids = [1, 2, 3, 4, 5,6,6,6,7,8]
+
+// function fetchUser(id){
+//   return new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//       resolve(`user ${id}`);
+//     }, 2000)
+//   })
+// }
+
+// async function resolveArray() {
+//   for(let id of ids){
+//     const result = await fetchUser(id);
+//     console.log(result);
+//   }
+// }
+// // resolveArray()
+
+/*Parallel loop */
+
+// function fetchUser(id){
+//   return new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//       resolve(`user ${id}`);
+//     }, 2000)
+//   })
+// }
+
+// async function resolveArray() {
+    
+//     const arrayOfPromises= ids.map((id)=>{
+//      return  fetchUser(id)
+//     }) 
+//    let result =await  Promise.all(arrayOfPromises)
+//     console.log(result)
+// }
+
+// resolveArray()
+
+
+
+
+
+
+/*TIMER LOGIC */
+// async function race1() {
+//   function slowTask(){
+//   return new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//       console.log("i am slowtask inside resolve")
+//       resolve("done")
+//     }, 1000)
+//   })
+// }
+// function withTimeout(promise,deadline ){
+//   const timerPromise = new Promise((_ , reject)=>{
+//     setTimeout(()=>{
+//       reject(new Error("tmeOut"))
+//       // reject("error")
+//     },deadline)
+//   })
+//   return Promise.race([promise, timerPromise])
+// }
+//   try{
+//   const newResult = await withTimeout(slowTask(), 2000);
+//   console.log(newResult);
+//   }catch(e){
+//     console.log(e)
+    
+  
+//   }
+// }
+// race1()
+
+
+/* RETRY LOGIC */
+
+// async function runRetry() {
+//   function unstableFetch(){
+//   return new Promise ((resolve, reject)=>{
+//     const randomSuccess = Math.random() > 0.6
+//       setTimeout(()=>{
+//            if(randomSuccess){
+//                resolve('Success!')
+//           }else{
+//                reject(new Error('error'))
+//           }
+//       }, 1000)
+//   })
+// }
+
+// async function retry(unstableAPI, attempts){
+//   for(let i = 1;i < attempts;i++){
+// try{
+//   return await unstableAPI()
+// }catch(e){
+//  if(i === attempts){
+//     throw e
+//  }
+// }
+// }
+
+// }
+// try{
+//   const newResult1 = await retry(unstableFetch, 3)
+// console.log(newResult1);
+// }catch(error){
+//   console.log("i catch the error")
+// }
+// } 
+// runRetry()
+
+
+
+// function unstableFetch(){
+//   return new Promise ((resolve, reject)=>{
+//     const randomSuccess = Math.random() > 0.6
+//       setTimeout(()=>{
+//            if(randomSuccess){
+//                resolve('Success!')
+//           }else{
+//                reject(new Error('error'))
+//           }
+//       }, 1000)
+//   })
+// }
+
+// function sleep(ms){
+//   return new Promise((resolve)=>{
+//     setTimeout(()=>{
+//       resolve()
+//     }, ms)
+//   })
+// }
+
+// async function retry(unstableAPI, attempts){
+//   for(let i = 1; i <= attempts; i++){
+//    console.log(`Attempt ${i} of ${attempts}`);
+// try{
+//   const result = await unstableAPI();
+//    console.log(`Success on attempt ${i}`);
+//   return result;
+// }catch(e){
+
+//  console.log(`Failed on attempt ${i}`);
+
+//   if(i === attempts){
+//     console.log(`No more attempts left! Error follow!`);
+//     throw e;
+//   }
+//   console.log("about to sleep before retry");
+//    await sleep(2000 * i);
+//   console.log(`Retrying...`);
+// }
+
+// }
+
+// }
+
+
+// async function runRetry() {
+//   try{
+//   const newResult1 = await retry(unstableFetch, 5)
+//   console.log('Final reuslt: ', newResult1);
+//  }catch(error){
+//   console.log("Failed after all attempts!")
+//   }
+// } 
+// runRetry()
+
+
+
+// function multiplication(){
+//   for(let ele of num){
+//     console.log(ele*2)
+//   }
+// }
+// multiplication()
+
+// async function multiplication1() {
+//   const result = await Promise.all(num.map((e)=>{
+//     return e*2}))
+//   console.log(result);
+  
+// }
+// multiplication1()
+const nums = [1,2,3]
+function double(element){
+
+  return new Promise((resolve)=>{
+    setTimeout(()=>{
+      resolve(element * 2)
+    }, 2000)
   })
 }
+ 
+async function multiplication1() {
+//  const partialResult =   nums.map(double)
+//  console.log(partialResult);
+ let result123 = await Promise.all(nums.map(double))
+ console.log(result123);
+ 
+ 
+}
+ multiplication1()
 
-
-
- function getPosts (userId) {
-  return new Promise((resolve,reject)=>{
-    let result = users.filter((element)=>{
-     return element.id === userId
-    
-    }).map((element)=>{
-     return element.title})
-    // console.log(result)
-    resolve(result)
-    })
-    
-  }
-
-  async function getUserPost() {
-    const user = await getUser(1);
-    // console.log(user.id);
-    const post = await getPosts(user.id);
-    console.log(post);
-
-    
-  }
-  getUserPost();
