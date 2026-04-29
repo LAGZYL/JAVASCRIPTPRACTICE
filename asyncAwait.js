@@ -520,23 +520,127 @@ const ids = [1, 2, 3, 4, 5,6,6,6,7,8]
   
 // }
 // multiplication1()
-const nums = [1,2,3]
-function double(element){
+// const nums = [1,2,3]
+// function double(element){
 
-  return new Promise((resolve)=>{
-    setTimeout(()=>{
-      resolve(element * 2)
-    }, 2000)
-  })
-}
+//   return new Promise((resolve)=>{
+//     setTimeout(()=>{
+//       resolve(element * 2)
+//     }, 2000)
+//   })
+// }
  
-async function multiplication1() {
-//  const partialResult =   nums.map(double)
-//  console.log(partialResult);
- let result123 = await Promise.all(nums.map(double))
- console.log(result123);
+// async function multiplication1() {
+// //  const partialResult =   nums.map(double)
+// //  console.log(partialResult);
+//  let result123 = await Promise.all(nums.map(double))
+//  console.log(result123);
  
  
-}
- multiplication1()
+// }
+//  multiplication1()
 
+const urls = ['a', 'b', 'c'];
+
+function fetchData(url){
+return new Promise((resolve, reject)=>{
+  setTimeout(()=>{
+       resolve (`Data from ${url}`)
+   }, 1000)
+
+})
+   
+}
+// const intermediatePromise = Promise.all(urls.map(fetchData))
+
+// intermediatePromise.then((values)=>{
+//    console.log(values) //
+// // })
+
+
+async function getMultipleUrlsSequentially(){
+  console.time("sequential")
+     const result1 = await fetchData(urls[0]);
+      const result2 = await fetchData(urls[1])
+      const result3 = await fetchData(urls[2])
+
+      console.log(result1, result2, result3 )
+      console.timeEnd("sequential")
+}
+// getMultipleUrlsSequentially()
+
+
+// async function getMultipleUrlConcurrently(){
+//       console.time("concurrent")
+//       const result1 =  fetchData(urls[0]);
+//       const result2 =  fetchData(urls[1])
+//       const result3 =   fetchData(urls[2])
+      
+//       const result = await Promise.all([result1, result2, result3])
+//       console.log(result);
+//       console.timeEnd("concurrent")
+// }
+// getMultipleUrlConcurrently()
+
+
+// async function run(){
+//   console.log('Start running');
+//   try{
+//  await Promise.all([
+    
+//     Promise.resolve(1),
+//     Promise.reject(new Error(2)),
+//     Promise.resolve(3)
+//  ]);
+
+//   }catch(e){
+//     console.log("e")
+     
+//   }
+//   console.log('Finished!') 
+
+// }
+
+// run()
+// console.log("i am after run")
+
+// function timeout(ms){
+//    return new Promise((resolve, reject)=>{
+//        setTimeout(()=>{
+//         reject(new Error("error occur"))
+//      }, ms)
+//   })
+
+// }
+// function fulfilPromise(s,delay){
+// return new Promise((resolve,reject)=>{
+//   setTimeout(()=>{
+//     resolve(s)
+//   },delay)
+// })
+// }
+
+
+
+// async function fetchWithTimeout(promise){
+
+//    const result = await Promise.race([promise, timeout(2000)])
+//    return result;
+
+// }
+// fetchWithTimeout(fulfilPromise("promisefulitilled",1000)).then((result)=>{
+// console.log(result);
+// })
+
+async function secureFetch(){
+  try {
+   const response =await fetch('https://invalid-url.nowhere');
+   const data = await response.json();
+  }catch(err){
+
+    console.log("error caught:", err.message);
+  }
+
+}
+
+secureFetch()
