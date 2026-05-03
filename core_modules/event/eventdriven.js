@@ -250,15 +250,144 @@ User alice is 4 years old*/
 
 hint: use async/await for the listener*/
 
-const EventEmitter = require("node:events");
-const emitter = new EventEmitter
+// const EventEmitter = require("node:events");
+// const emitter = new EventEmitter
 
-emitter.on("fetchData", async()=>{
-  const result =  await new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-     resolve("data received")
-    },1000)
-  })
-  console.log(result);
+// emitter.on("fetchData", async()=>{
+//   const result =  await new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//      resolve("data received")
+//     },1000)
+//   })
+//   console.log(result);
+// })
+// emitter.emit("fetchData")
+
+/*build an event system where:
+
+  event 'task' randomly ===>Math.random() [0, 1)
+    emits 'success'
+    OR emits 'error'
+
+handle both cases properly*/
+
+// const EventEmitter = require("node:events")
+// const emitter = new EventEmitter
+
+// emitter.on("task", ()=>{
+//  let success = Math.random() > 0.5
+//  if(success){
+//   emitter.emit("success", "fulfilled")
+//  }else{
+//   emitter.emit("error", new Error("error occur") )
+//  }
+ 
+// })
+
+// emitter.on("success", (da)=>{
+//   console.log(da)
+// })
+
+// emitter.on("error", (e)=>{
+//   console.log("error: ", e.message);
+// } )
+
+// emitter.emit("task")
+// emitter.on("error", (error)=>{
+//   console.log("error ", error)
+// } )
+// emitter.emit("error", new Error("welcome"))
+
+// let Param =  ()=>{
+
+//    console.log('running')
+
+// }
+// emitter.on('test',Param)
+
+// emitter.off('test', Param)
+
+// emitter.emit('test')
+// emitter.emit('test')
+// emitter.emit('test')
+
+
+// emitter.on('task', async ()=>{
+//   const result =  await new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//        resolve()  
+//    }, 1000) 
+//    }) 
+//     console.log("done") 
+
+// })
+
+// console.log('start') 
+// emitter.emit('task')
+// console.log('end') 
+
+// emitter.setMaxListeners(25);
+// for (let i =0; i < 21; i++){
+//   emitter.on('information', ()=>{
+//      console.log('Listener: ', i)
+// })
+// }
+
+/*
+simulate event-based chat system
+
+goal: simulate a chat room where users send messages and others receive them.
+
+concepts
+  multiple listeners
+  passing data
+  event broadcasting
+
+starter code
+
+const EventEmitter = require('node:events');
+const chat = new EventEmitter();
+
+// TODO: Add listeners for users
+function createuser(name){
+
+}
+createuser('Alice')
+createuser('Bob')
+
+//simulate sending messages
+chat.emit('message', {user: 'Alice', text: 'Hello!'});
+tasks
+
+1. add 2 users as listeners
+2. each user should
+   receive all messages
+   ignore their own messages
+3. output format like
+  Bob received: Hello!
+  Alice received: Hi there*/
+
+const EventEmitter = require('node:events');
+const chat = new EventEmitter();
+
+function createuser(name){
+chat.on("message", (data)=>{
+  if(data.user !== name){
+   console.log(`${name} received: ${data.text} from ${data.user}`)
+  }
+ 
 })
-emitter.emit("fetchData")
+
+}
+createuser('Alice')
+createuser('Bob')
+createuser("john")
+
+//simulate sending messages
+
+chat.emit('message', {user: 'Bob', text: 'Hi there'});
+chat.emit('message', {user: 'Alice', text: 'Hello!'});
+chat.emit('message', {user: 'john', text: 'how are you'});
+
+
+
