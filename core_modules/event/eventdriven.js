@@ -367,27 +367,169 @@ tasks
   Bob received: Hello!
   Alice received: Hi there*/
 
-const EventEmitter = require('node:events');
-const chat = new EventEmitter();
+// const EventEmitter = require('node:events');
+// const chat = new EventEmitter();
 
-function createuser(name){
-chat.on("message", (data)=>{
-  if(data.user !== name){
-   console.log(`${name} received: ${data.text} from ${data.user}`)
-  }
+// function createuser(name){
+// chat.on("message", (data)=>{
+//   if(data.user !== name){
+//    console.log(`${name} received: ${data.text} from ${data.user}`)
+//   }
  
-})
+// })
 
-}
-createuser('Alice')
-createuser('Bob')
-createuser("john")
+// }
+// createuser('Alice')
+// createuser('Bob')
+// createuser("john")
 
-//simulate sending messages
+// //simulate sending messages
 
-chat.emit('message', {user: 'Bob', text: 'Hi there'});
-chat.emit('message', {user: 'Alice', text: 'Hello!'});
-chat.emit('message', {user: 'john', text: 'how are you'});
+// chat.emit('message', {user: 'Bob', text: 'Hi there'});
+// chat.emit('message', {user: 'Alice', text: 'Hello!'});
+// chat.emit('message', {user: 'john', text: 'how are you'});
 
 
 
+// // logging system
+
+// //   info
+// //   warning
+// //   error
+
+// // concepts
+// //   multiple event types
+// //   model real-world architecture
+
+/*
+tasks
+ 1.) handle each log type differently
+  [INFO] msg
+  [WARNING] msg
+  [ERROR] msg
+
+ 2.)add timestamp to all logs
+
+*/
+//starter code
+
+// const EventEmitter = require('node:events')
+// const logger = new EventEmitter()
+
+// //TODO: add listeners
+// logger.on("info", (message)=>{
+// console.log(`[INFO] ${message}- ${new Date().toISOString() }`)
+// })
+// logger.on("warning", (message)=>{
+//   console.log(`[WARNING] ${message}- ${new Date().toISOString() } `)
+// })
+//  logger.on("error", (error)=>{
+//   console.log(`[ERROR] ,${error}- ${new Date().toISOString() } `)
+//  })
+
+
+// function log(type, message){
+//   logger.emit(type,message);
+// }
+// log('info', 'server started' )
+// log('warning', 'low memory' )
+// log('error', 'database crashed')
+// log('info', 'server started' )
+// log('warning', 'low memory' )
+// log('error', 'database crashed')
+// log('info', 'server started' )
+// log('warning', 'low memory' )
+// log('error', 'database crashed')
+// log('info', 'server started' )
+// log('warning', 'low memory' )
+// log('error', 'database crashed')
+// log('info', 'server started' )
+// log('warning', 'low memory' )
+// log('error', 'database crashed')
+// log('info', 'server started' )
+// log('warning', 'low memory' )
+// log('error', 'database crashed')
+// log('info', 'server started' )
+// log('warning', 'low memory' )
+// log('error', 'database crashed')
+
+
+
+/*express-like behavior
+
+goal:
+simulate how an API handles request lifecycle events
+
+ request 
+ success
+ error
+
+tasks
+
+1) log when request starts (or when it comes in)
+2) log success message
+3.) handle error safely (no crash)
+4.) format output clearly*/
+
+//starter code
+
+// const EventEmitter = require('node:events')
+// const api = new EventEmitter()
+// api.on("request", (user)=>{
+//   console.log(`request, received from for ${user}`)
+// })
+// api.on("success", (user)=>{
+//   console.log(`success, user found ${user}`)
+// })
+// api.on("error", (error)=>{
+//   console.log(`error, error found ${error.message} `)
+// })
+// //TODO handle events
+
+// function handleRequest(user){
+//   api.emit('request', user);
+//   if (!user){
+//     api.emit('error', new Error("No user!"))
+//   }else{
+//    api.emit('success', user)
+//  }
+// }
+// handleRequest('joe')
+// handleRequest(null)
+
+
+/*simulate traffic lights
+
+red
+yellow
+green
+
+core concept here is sequencing
+*/
+//starter code
+
+// const { emit } = require('node:cluster')
+// const EventEmitter = require('node:events')
+// const trafficLight = new EventEmitter()
+
+// trafficLight.on("red", ()=>{
+// setTimeout(()=>{
+//   console.log("red")
+//   trafficLight.emit("green")
+// },1000)
+// })
+// trafficLight.on("green", ()=>{
+//   setTimeout(()=>{
+//     console.log("green")
+//     trafficLight.emit("yellow")
+//   },1000)
+// })
+// trafficLight.on("yellow", ()=>{
+//   setTimeout(()=>{
+//     console.log("yellow")
+//      trafficLight.emit('red')
+//   },1000)
+// })
+
+//   trafficLight.emit('red')
+  
